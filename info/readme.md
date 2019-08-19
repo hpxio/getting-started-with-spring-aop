@@ -16,3 +16,11 @@ When the code is executed and the condition for pointcut is met, the advice is e
 
 Weaver  
 `Weaver` is the framework which implements AOP - AspectJ or Spring AOP.
+
+
+Using the @After, @AfterReturning, and @AfterThrowing Advices
+Let’s now the other interception options AOP provides.
+
+@After: executed in two situations — when a method executes successfully or it throws an exception.
+@AfterReturning: executed only when a method executes successfully.
+@AfterThrowing: executed only when a method throws an exception.
