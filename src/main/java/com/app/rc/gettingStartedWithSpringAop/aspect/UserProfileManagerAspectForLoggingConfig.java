@@ -5,6 +5,7 @@ import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,10 +20,19 @@ public class UserProfileManagerAspectForLoggingConfig {
   /**
    * @param joinPoint
    */
+  @Order(0)
   @Before("execution(* com.app.rc.gettingStartedWithSpringAop.persistence.repository.UserProfileRepositoryImpl.*(..))")
   public void beforeUserProfilePointCutDefinition(JoinPoint joinPoint) {
-    log.info("Aspect : {}", joinPoint.getSignature());
     log.info("Arguments : {}", joinPoint.getArgs());
+  }
+
+  /**
+   * @param joinPoint
+   */
+  @Order(1)
+  @Before("execution(* com.app.rc.gettingStartedWithSpringAop.persistence.repository.UserProfileRepositoryImpl.*(..))")
+  public void beforeUserProfilePointCutDefinition1(JoinPoint joinPoint) {
+    log.info("Aspect : {}", joinPoint.getSignature());
   }
 
   /**
