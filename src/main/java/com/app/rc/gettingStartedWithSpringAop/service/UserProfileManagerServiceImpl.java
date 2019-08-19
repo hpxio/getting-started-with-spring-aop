@@ -1,5 +1,6 @@
 package com.app.rc.gettingStartedWithSpringAop.service;
 
+import com.app.rc.gettingStartedWithSpringAop.aspect.LogExecutionTime;
 import com.app.rc.gettingStartedWithSpringAop.persistence.entity.UserProfileEntity;
 import com.app.rc.gettingStartedWithSpringAop.persistence.repository.UserProfileRepository;
 import com.app.rc.gettingStartedWithSpringAop.shared.dto.UserProfileDTO;
@@ -23,6 +24,7 @@ public class UserProfileManagerServiceImpl implements UserProfileManagerService 
    * @return
    */
   @Override
+  @LogExecutionTime
   public boolean CreateUserProfile(UserProfileDTO data) {
     final boolean res;
     UserProfileEntity entity = new UserProfileEntity();
@@ -30,6 +32,13 @@ public class UserProfileManagerServiceImpl implements UserProfileManagerService 
     repository.save(entity);
 
     res = repository.fetch(data.getId()) != null;
+
+    /* For testing the @ExecutionTimeAnnotation */
+    try {
+      Thread.sleep(1000);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     return res;
   }
 

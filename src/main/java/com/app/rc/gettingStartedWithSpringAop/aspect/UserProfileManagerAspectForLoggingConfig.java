@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * Demonstration of basic Advices - <tt>@Before</tt> & <tt>@After</tt>.
+ */
 @Slf4j
 @Aspect
 @Configuration
